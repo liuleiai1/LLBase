@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+custom used for LLBase
                        DESC
 
   s.homepage         = 'https://github.com/liuleiai1/LLBase'
@@ -30,8 +30,25 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'LLBase/Classes/**/*'
-  
+#s.source_files = 'LLBase/Classes/**/*'
+
+s.subspec 'Category' do |c|
+    c.source_files = 'LLBase/Classes/Category/**/*'
+end
+s.subspec 'Base' do |b|
+    b.source_files = 'LLBase/Classes/Base/**/*'
+end
+s.subspec 'Tool' do |t|
+    t.source_files = 'LLBase/Classes/Tool/**/*'
+end
+s.subspec 'Network' do |n|
+    n.source_files = 'LLBase/Classes/Network/**/*'
+    n.dependency 'LLBase/Category'
+    n.dependency 'AFNetworking', '~> 3.1.0'
+    n.dependency 'SDWebImage', '~> 4.2.2'
+end
+
+
   # s.resource_bundles = {
   #   'LLBase' => ['LLBase/Assets/*.png']
   # }

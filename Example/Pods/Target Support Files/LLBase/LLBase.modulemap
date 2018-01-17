@@ -1,0 +1,6 @@
+framework module LLBase {
+  umbrella header "LLBase-umbrella.h"
+
+  export *
+  module * { export * }
+}
