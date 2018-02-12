@@ -28,12 +28,12 @@
     }];    
 }
 
-- (void)setURLImageWithURL: (NSURL *)url placeHoldImage:(UIImage *)placeHoldImage isCircle:(BOOL)isCircle {
+- (void)setURLImageWithURL: (NSURL *)url placeHoldImage:(NSString *)placeHoldImageStr isCircle:(BOOL)isCircle {
     
     if (isCircle) {
-        [self sd_setImageWithURL:url placeholderImage:[placeHoldImage circleImage] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self sd_setImageWithURL:url placeholderImage:[UIImage clipImageWithName:placeHoldImageStr borderWidth:0 borderColor:nil] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
-            UIImage *resultImage = [image circleImage];
+            UIImage *resultImage = [UIImage clipImageWithName: [NSString stringWithContentsOfURL:imageURL encoding:NSUTF8StringEncoding error:nil] borderWidth:0 borderColor:nil];
             
             // 6. 处理结果图片
             if (resultImage == nil) return;
@@ -41,7 +41,7 @@
         }];
         
     }else {
-        [self sd_setImageWithURL:url placeholderImage:placeHoldImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:placeHoldImageStr] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
             // 6. 处理结果图片
             if (image == nil) return;

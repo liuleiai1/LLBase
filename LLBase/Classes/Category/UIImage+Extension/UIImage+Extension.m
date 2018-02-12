@@ -65,7 +65,12 @@
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     // 4.画大圆
-    [borderColor set]; // 边框颜色
+    if (borderColor) {
+        [borderColor set]; // 边框颜色
+    } else {
+        [[UIColor whiteColor] set];
+    }
+    
     CGFloat bigRadius = imgW / 2; // 大圆半径
     CGFloat centerX = bigRadius; // 圆心
     CGFloat centerY = bigRadius;

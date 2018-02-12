@@ -11,6 +11,6 @@
 
 - (void)setURLImageWithURL: (NSURL *)url progress:(void(^)(CGFloat progress))progress complete: (void(^)())complete;
 
-- (void)setURLImageWithURL: (NSURL *)url placeHoldImage:(UIImage *)placeHoldImage isCircle:(BOOL)isCircle;
+- (void)setURLImageWithURL: (NSURL *)url placeHoldImage:(NSString *)placeHoldImageStr isCircle:(BOOL)isCircle;
 
 @end
