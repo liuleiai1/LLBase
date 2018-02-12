@@ -9,9 +9,7 @@
 
 @interface UITextField (LLPlaceholder)
 
-/**
- * 增加占位文字颜色属性
- */
+/** 增加占位文字颜色属性 */
 @property (nonatomic, strong) UIColor *placeholderColor;
 
 @end

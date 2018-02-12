@@ -14,7 +14,10 @@
 #define LLLog(...)
 #endif
 
+// 生成字符串
+#define NSString(...)  [NSString stringWithFormat:__VA_ARGS__]
 
+// 打印当前类的调用方法
 #define LLFunc LLLog(@"%s",__func__)
 
 // 设备屏幕高度
@@ -29,6 +32,10 @@
 #define iphone5 (SCR_HIGHT == 568)
 #define iphone4 (SCR_HIGHT == 480)
 
+#define iphone_X (IS_IOS_11 && (MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) == 375 && MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) == 812))
+
+// iOS 11
+#define IS_IOS_11  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.f)
 
 // APP的字体 暂且为系统字体
 #define fontApp(size)   [UIFont systemFontOfSize:size]

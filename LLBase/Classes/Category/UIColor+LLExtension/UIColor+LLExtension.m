@@ -9,7 +9,7 @@
 
 @implementation UIColor (LLExtension)
 
-+ (UIColor *)randomColor {
++ (instancetype)randomColor {
     
     CGFloat r  = (arc4random() % 256) / 255.0;
     CGFloat g = (arc4random() % 256) / 255.0;
@@ -17,12 +17,12 @@
     return [UIColor colorWithRed:r green:g blue:b alpha:1.0];
 }
 
-+ (UIColor *)colorWithHex:(NSString *)hexColor {
++ (instancetype)colorWithHex:(NSString *)hexColor {
     
     return [self colorWithHex:hexColor alpha:1.0f];
 }
 
-+ (UIColor *)colorWithHex:(NSString *)hexColor alpha:(float)alpha {
++ (instancetype)colorWithHex:(NSString *)hexColor alpha:(float)alpha {
     //删除空格
     NSString *colorStr = [[hexColor stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
     // String should be 6 or 8 characters

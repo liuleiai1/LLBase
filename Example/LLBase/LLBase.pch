@@ -1,0 +1,14 @@
+//
+//  LLBase.pch
+//  LLBase
+//
+//  Created by 迦南 on 2018/1/21.
+//  Copyright © 2018年 liuleiai1. All rights reserved.
+//
+
+#ifndef LLBase_pch
+#define LLBase_pch
+
+#import "Define.h"
+
+#endif /* LLBase_pch */

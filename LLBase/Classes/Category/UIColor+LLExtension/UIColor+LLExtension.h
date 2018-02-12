@@ -9,14 +9,14 @@
 
 @interface UIColor (LLExtension)
 
-/** 生成随机色*/
-+ (UIColor *)randomColor;
+/** 生成随机色 */
++ (instancetype)randomColor;
 
-/** 根据16进制的字符串生成相应的颜色,默认透明度为1.0*/
-+ (UIColor *)colorWithHex:(NSString *)hexColor;
+/** 根据16进制的字符串生成相应的颜色,默认透明度为1.0 */
++ (instancetype)colorWithHex:(NSString *)hexColor;
 
-/** 根据16进制的字符串和传入的alpha生成相应的颜色*/
-+ (UIColor *)colorWithHex:(NSString *)hexColor alpha:(float)alpha;
+/** 根据16进制的字符串和传入的alpha生成相应的颜色 */
++ (instancetype)colorWithHex:(NSString *)hexColor alpha:(float)alpha;
 
 
 @end

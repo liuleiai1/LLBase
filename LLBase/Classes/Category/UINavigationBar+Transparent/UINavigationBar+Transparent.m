@@ -26,9 +26,9 @@ static const void *KCustomViewKey = @"KCustomViewKey";
     }
     self.customView.backgroundColor = backgroundColor;
     
-    for (UIView *view in self.subviews) {
-        NSLog(@"----%@", view.class);
-    }
+//    for (UIView *view in self.subviews) {
+//        NSLog(@"----%@", view.class);
+//    }
 }
 
 - (void)js_reset

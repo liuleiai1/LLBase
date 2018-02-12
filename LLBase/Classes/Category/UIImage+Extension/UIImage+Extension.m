@@ -10,14 +10,14 @@
 @implementation UIImage (Extension)
   
 /* 返回一个没有被渲染的图片 **/
-+ (UIImage *)imageOriginalWithName:(NSString *)imageName {
++ (instancetype)imageOriginalWithName:(NSString *)imageName {
 
     UIImage *image = [UIImage imageNamed:imageName];
     return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
     
 /* 返回一个不被拉伸的图片 **/
-+ (UIImage *)resizableImage:(UIImage *)image {
++ (instancetype)resizableImage:(UIImage *)image {
     
     return [image stretchableImageWithLeftCapWidth:image.size.width * 0.5 topCapHeight:image.size.height * 0.5];
 }
@@ -28,7 +28,7 @@
 @implementation UIImage (LLBasic)
 
 /* 截图 **/
-+ (UIImage *)captureWithView:(UIView *)view {
++ (instancetype)captureWithView:(UIView *)view {
     
     // 1.开启上下文
     UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, 0.0);
@@ -47,15 +47,18 @@
 }
 
 /* 图片裁剪 **/
-+ (UIImage *)clipImageWithName:(NSString *)name borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor {
++ (instancetype)clipImageWithName:(NSString *)name borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor {
     
     // 1.加载原图
     UIImage *oldImg = [UIImage imageNamed:name];
     
     // 2.创建图形上下文
+    CGSize size = oldImg.size;
+    CGFloat drawWH = size.width < size.height ? size.width : size.height;
+    
     CGFloat borderW = borderWidth; // 圆环的宽度
-    CGFloat imgW = oldImg.size.width + borderW * 2;
-    CGFloat imgH = oldImg.size.height + borderW * 2;
+    CGFloat imgW = drawWH + borderW * 2;
+    CGFloat imgH =drawWH + borderW * 2;
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(imgW, imgH), NO, 0.0);
     
     // 3.取得当前上下文
@@ -90,7 +93,7 @@
 }
 
 /* 打水印 **/
-+ (UIImage *)watermarkWithBg:(NSString *)bg logo:(NSString *)logo {
++ (instancetype)watermarkWithBg:(NSString *)bg logo:(NSString *)logo {
     
     UIImage *oldImg = [UIImage imageNamed:bg];
     
@@ -120,34 +123,6 @@
     
     // 6.返回image
     return newImg;    
-}
-
-- (UIImage *)circleImage {
-    
-    CGSize size = self.size;
-    CGFloat drawWH = size.width < size.height ? size.width : size.height;
-    
-    
-    // 1. 开启图形上下文
-    UIGraphicsBeginImageContext(CGSizeMake(drawWH, drawWH));
-    // 2. 绘制一个圆形区域, 进行裁剪
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGRect clipRect = CGRectMake(0, 0, drawWH, drawWH);
-    CGContextAddEllipseInRect(context, clipRect);
-    CGContextClip(context);
-    
-    // 3. 绘制大图片
-    CGRect drawRect = CGRectMake(0, 0, size.width, size.height);
-    [self drawInRect:drawRect];
-    
-    // 4. 取出结果图片
-    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // 5. 关闭上下文
-    UIGraphicsEndImageContext();
-    
-    return resultImage;
-    
 }
 
 @end

@@ -1,7 +1,7 @@
 {
   "name": "LLBase",
-  "version": "0.1.0",
-  "summary": "A short description of LLBase.",
+  "version": "0.1.1",
+  "summary": "LLBase.",
   "description": "custom used for LLBase",
   "homepage": "https://github.com/liuleiai1/LLBase",
   "license": {
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/liuleiai1/LLBase.git",
-    "tag": "0.1.0"
+    "tag": "0.1.1"
   },
   "platforms": {
     "ios": "8.0"
